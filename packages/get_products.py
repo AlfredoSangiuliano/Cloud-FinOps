@@ -94,11 +94,7 @@ def list_active_cloudformation_stacks():
     return cloudformationstacks
 
 def fix_datetime(datetime):
-    print(datetime)
-    if "datetime.datetime" in datetime:
-        return datetime[18:22]
-    elif "+0000" in datetime:
-        return datetime[0:4]
+    return datetime[0:7]
 
 def report():
     # This dictionary will be populated with AWS products, platforms and services (pps).
