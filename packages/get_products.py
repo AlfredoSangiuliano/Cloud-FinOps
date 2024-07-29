@@ -77,7 +77,7 @@ def list_ec2_snapshots():
         
         # Mostrar información sobre cada snapshot
         for snapshot in response['Snapshots']:
-            ec2_snapshots[snapshot['Description']] = snapshot['StartTime']
+            ec2_snapshots[snapshot['SnapshotId']] = snapshot['StartTime']
     except boto3.exceptions.Boto3Error as e:
         print(f"Error al listar los snapshots: {e}")
     return ec2_snapshots
