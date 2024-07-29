@@ -1,9 +1,6 @@
 import boto3
 from pprint import pprint
 
-# This dictionary will be populated with AWS products, platforms and services (pps).
-pps = {}
-
 def list_s3_buckets():
     buckets = {}
     s3_client = boto3.client('s3')
@@ -97,11 +94,22 @@ def list_active_cloudformation_stacks():
         print(f"Error listing buckets: {e}")
     return cloudformationstacks
 
+def fix_datetime(datetime):
+    if "datetime.datetime" in datetime:
+        return datetime[18:22]
+    elif "+0000" in datetime:
+        return datetime[0:4]
+
+# This dictionary will be populated with AWS products, platforms and services (pps).
+pps = {}
 pps['Buckets'] = list_s3_buckets()
 pps['Lambda'] = list_lambda_functions()
 pps['SageMakerDomains'] = list_sagemaker_domains()
 pps['SageMakerImages'] = list_sagemaker_images()
 pps['EC2_snapshots'] = list_ec2_snapshots()
 pps['Cloud_Formation'] = list_active_cloudformation_stacks()
+
+for k,v in pps: 
+    pps[k] = fix_datetime(v)
 
 pprint(pps)
