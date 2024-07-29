@@ -113,4 +113,9 @@ def report():
         for k,v in val.items():
             pps[key][k] = fix_datetime(str(v))
 
+    for key,val in pps.items():
+        print(f'{key}:')
+        for k,v in val.items():
+            print(f'Year {v} -> {k} ')
+
     pprint(pps)
