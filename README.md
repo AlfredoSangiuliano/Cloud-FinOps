@@ -1,5 +1,7 @@
 # Cloud-FinOps
 
+## IMPORTANT: Under no circumstances should this script be used in a production environment.
+
 As part of a AWS learning path, after each sprint of the program, we have to clean-up a group of AWS Sandbox accounts.
 
 Initially, we performed a manual cleanup of resources created by the students.
