@@ -1,5 +1,6 @@
 
 from packages.get_products import *
+from packages.get_expenses import *
 
 ans=True
 menu = """
@@ -17,7 +18,7 @@ while ans:
     if ans=="1": 
         report()
     elif ans=="2":
-      print("\n Option 2") 
+        list_cost_generating_services() 
     elif ans=="3":
       print("\n Option 3") 
     elif ans=="4":
