@@ -1,6 +1,7 @@
 
 from packages.get_products import *
 from packages.get_expenses import *
+from packages.ec2_spot_count import *
 
 ans=True
 menu = """
@@ -20,7 +21,7 @@ while ans:
     elif ans=="2":
         list_cost_generating_services() 
     elif ans=="3":
-      print("\n Option 3") 
+        list_ec2_costs()
     elif ans=="4":
       print("\n Option 4") 
     elif ans !="":
