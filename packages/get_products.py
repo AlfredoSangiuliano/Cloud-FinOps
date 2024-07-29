@@ -12,7 +12,6 @@ def list_s3_buckets():
         # Call to list_buckets function: 
         response = s3_client.list_buckets()
         for bucket in response['Buckets']:
-            counter += 1
             buckets[bucket['Name']] = bucket['CreationDate']
     except boto3.exceptions.Boto3Error as e:
         print(f"Error listing buckets: {e}")
