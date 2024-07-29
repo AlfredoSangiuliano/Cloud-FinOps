@@ -111,6 +111,6 @@ pps['Cloud_Formation'] = list_active_cloudformation_stacks()
 
 for key,val in pps.items():
     for k,v in val.items():
-        pps[key][k] = fix_datetime(v)
+        pps[key][k] = fix_datetime(str(v))
 
 pprint(pps)
