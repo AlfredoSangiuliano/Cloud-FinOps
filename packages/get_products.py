@@ -80,6 +80,7 @@ def list_ec2_snapshots():
             ec2_snapshots[snapshot['Description']] = snapshot['StartTime']
     except boto3.exceptions.Boto3Error as e:
         print(f"Error al listar los snapshots: {e}")
+    return ec2_snapshots
 
 pps['Buckets'] = list_s3_buckets()
 pps['Lambda'] = list_lambda_functions()
