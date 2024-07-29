@@ -109,7 +109,8 @@ pps['SageMakerImages'] = list_sagemaker_images()
 pps['EC2_snapshots'] = list_ec2_snapshots()
 pps['Cloud_Formation'] = list_active_cloudformation_stacks()
 
-for k,v in pps['Buckets']: 
-    pps['Buckets'][k] = fix_datetime(v)
+for key,val in pps.items():
+    for k,v in val.items():
+        pps[key][k] = fix_datetime(v)
 
 pprint(pps)
