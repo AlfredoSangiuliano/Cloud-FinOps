@@ -11,3 +11,6 @@ Goals are:
 - Gain intelligent insights into spending during the sprint in a timely manner,
 - Automate the cleanup process,
 - Align with the Fin-Ops methodology.
+
+Getting started: 
+run main.py
