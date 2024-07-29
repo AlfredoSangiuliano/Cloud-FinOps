@@ -82,10 +82,26 @@ def list_ec2_snapshots():
         print(f"Error al listar los snapshots: {e}")
     return ec2_snapshots
 
+def list_active_cloudformation_stacks():
+    # Crear un cliente para CloudFormation
+    client = boto3.client('cloudformation')
+    cloudformationstacks = {}
+    try:
+        # Llamar a describe_stacks para obtener todos los stacks
+        response = client.describe_stacks()
+
+        # Filtrar y mostrar los stacks activos
+        for stack in response['Stacks']:
+            cloudformationstacks[stack['StackName']] = stack['CreationTime']
+    except boto3.exceptions.Boto3Error as e:
+        print(f"Error listing buckets: {e}")
+    return cloudformationstacks
+
 pps['Buckets'] = list_s3_buckets()
 pps['Lambda'] = list_lambda_functions()
 pps['SageMakerDomains'] = list_sagemaker_domains()
 pps['SageMakerImages'] = list_sagemaker_images()
 pps['EC2_snapshots'] = list_ec2_snapshots()
+pps['Cloud_Formation'] = list_active_cloudformation_stacks()
 
 pprint(pps)
