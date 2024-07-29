@@ -85,6 +85,6 @@ pps['Buckets'] = list_s3_buckets()
 pps['Lambda'] = list_lambda_functions()
 pps['SageMakerDomains'] = list_sagemaker_domains()
 pps['SageMakerImages'] = list_sagemaker_images()
-pps['EC2_snapshots'] = list_sagemaker_images()
+pps['EC2_snapshots'] = list_ec2_snapshots()
 
 pprint(pps)
