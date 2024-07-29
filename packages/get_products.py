@@ -6,7 +6,6 @@ pps = {}
 
 def list_s3_buckets():
     buckets = {}
-    counter = 0
     s3_client = boto3.client('s3')
 
     try:
@@ -17,12 +16,12 @@ def list_s3_buckets():
             buckets[bucket['Name']] = bucket['CreationDate']
     except boto3.exceptions.Boto3Error as e:
         print(f"Error listing buckets: {e}")
-    pps["Buckets"] = buckets
+    return buckets
 
 
 def list_lambda_functions():
     # Create a Lambda client
-    counter = 0
+    lambdaF = {}
     lambda_client = boto3.client('lambda')
 
     try:
@@ -31,10 +30,12 @@ def list_lambda_functions():
 
         # Print information about each function
         for function in response['Functions']:
-            counter += 1
-            pps[f'Lambda Function {str(counter)}'] = function['FunctionName']
+            lambdaF[function['FunctionName']] = function['LastModified']
     except boto3.exceptions.Boto3Error as e:
         print(f"Error listing Lambda functions: {e}")
+    return lambdaF
 
+pps['Buckets'] = list_s3_buckets()
+pps['LambdaF'] = list_lambda_functions()
 
-pprint(list_s3_buckets())
+pprint(pps)
