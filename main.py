@@ -7,11 +7,13 @@ menu = """
     2.Show expenses
     3.Show Spot or Ondemand EC2 expenses 
     4.Delete products (WIP)
+
+    Enter to quit
 """
 
 while ans:
     print(menu)
-    ans=input("What would you like to do?")
+    ans=input("Select an option?: ")
     if ans=="1": 
         report()
     elif ans=="2":
