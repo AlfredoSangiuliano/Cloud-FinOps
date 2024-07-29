@@ -56,7 +56,6 @@ def list_sagemaker_images():
         sagemakerimages = {}
 
         # Adding information about each imageto 
-        print("SageMaker Images:")
         for image in response['Images']:
             sagemakerimages[image['ImageName']] = image['CreationTime']
     except boto3.exceptions.Boto3Error as e:
@@ -87,7 +86,7 @@ def list_active_cloudformation_stacks():
         # Llamar a describe_stacks para obtener todos los stacks
         response = client.describe_stacks()
 
-        # Filtrar y mostrar los stacks activos
+        # Add stacks to cloudformationstacks dict
         for stack in response['Stacks']:
             cloudformationstacks[stack['StackName']] = stack['CreationTime']
     except boto3.exceptions.Boto3Error as e:
