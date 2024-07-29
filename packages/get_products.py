@@ -110,6 +110,6 @@ pps['EC2_snapshots'] = list_ec2_snapshots()
 pps['Cloud_Formation'] = list_active_cloudformation_stacks()
 
 for k,v in pps['Buckets']: 
-    pps[k] = fix_datetime(v)
+    pps['Buckets'][k] = fix_datetime(v)
 
 pprint(pps)
