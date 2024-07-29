@@ -34,7 +34,26 @@ def list_lambda_functions():
         print(f"Error listing Lambda functions: {e}")
     return lambdaF
 
+def list_sagemaker_domains():
+    # Create a SageMaker client
+    sagemaker_client = boto3.client('sagemaker')
+    sagemakerdomains = {}
+
+    try:
+        # Call list_domains to get all domains
+        response = sagemaker_client.list_domains()
+
+        # Print information about each domain
+        print("SageMaker Domains:")
+        for domain in response['Domains']:
+            sagemakerdomains[domain['DomainName']] = domain['CreationTime']
+    except boto3.exceptions.Boto3Error as e:
+        print(f"Error listing SageMaker domains: {e}")
+    return sagemakerdomains
+
+
 pps['Buckets'] = list_s3_buckets()
-pps['LambdaF'] = list_lambda_functions()
+pps['Lambda'] = list_lambda_functions()
+pps['SageMakerDomains'] = list_sagemaker_domains()
 
 pprint(pps)
