@@ -1,22 +1,23 @@
 import boto3
 from pprint import pprint
-# Dictionary with AWS products, platforms and services.
 
+# This dictionary will be populated with AWS products, platforms and services (pps).
 pps = {}
 
 def list_s3_buckets():
+    buckets = {}
     counter = 0
     s3_client = boto3.client('s3')
 
     try:
-        # Call list_cuckets to get buckets: 
+        # Call to list_buckets function: 
         response = s3_client.list_buckets()
         for bucket in response['Buckets']:
             counter += 1
-            pps[f'Bucket {str(counter)}'] = bucket['Name']
+            buckets[bucket['Name']] = bucket['CreationDate']
     except boto3.exceptions.Boto3Error as e:
         print(f"Error listing buckets: {e}")
-    return pps
+    pps["Buckets"] = buckets
 
 
 def list_lambda_functions():
