@@ -1,6 +1,6 @@
 # Cloud-FinOps
 
-As part of the AWS learning path, after each sprint of the program, my team and I are required to clean up a group of AWS Sandbox accounts.
+As part of a AWS learning path, after each sprint of the program, we have to clean-up a group of AWS Sandbox accounts.
 
 Initially, we performed a manual cleanup of resources created by the students.
 Now I am writing some small python tools to help automate the cleanup process and/or gain more control over spending. Using Boto3 AWS library. 
